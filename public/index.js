@@ -1,3 +1,12 @@
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then(reg => console.log("Service Worker: Registered", reg))
+      .catch(err => console.log(` Service Worker: Error: ${err}`))
+  })
+}
+
 let transactions = [];
 let myChart;
 
@@ -144,10 +153,31 @@ function sendTransaction(isAdding) {
   });
 }
 
+function clearFunction() {
+  fetch("/api/delete", {method: "DELETE"})
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    transactions = [];
+    tbody.empty();
+    tbody.removeChild();
+    tbody.innerHTML = "";
+    myChart.destroy();
+
+  });
+};
+
 document.querySelector("#add-btn").onclick = function() {
   sendTransaction(true);
 };
 
 document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
+};
+
+document.querySelector("#clear-btn").onclick = function () {
+  event.preventDefault();
+  clearFunction();
+  location.reload();
 };
