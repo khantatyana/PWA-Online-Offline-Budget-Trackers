@@ -2,9 +2,7 @@
 
 [![Build Status](https://img.shields.io/badge/Project%20title-PWA--Online--Offline--Budget--Trackers-red)](https://img.shields.io/badge/Project%20title-PWA--Online--Offline--Budget--Trackers-red)
 
-GIVEN a user is on Budget Tracker Application without an internet connection
-WHEN the user inputs a withdrawal or deposit
-THEN that will be shown on the page, and added to their transaction history when their connection is back online.
+GIVEN a user is on Budget Tracker Application (PWA) without an internet connection (IndexedDB, Service Worker) WHEN the user inputs a withdrawal or deposit THEN that will be shown on the page, and added to their transaction history (MongoDB Atlas) when their connection is back online.
 
 [Heroku deployed App](https://floating-castle-47147.herokuapp.com/)
 
